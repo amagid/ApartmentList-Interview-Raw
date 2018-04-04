@@ -33,3 +33,9 @@ function createGroups(names, groupSize) {
     shuffle(names);
     return generateGroups(names, groupSize);
 }
+
+module.exports = {
+    shuffle,
+    generateGroups,
+    createGroups
+};
