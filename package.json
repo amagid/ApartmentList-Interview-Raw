@@ -1,0 +1,11 @@
+{
+  "name": "apartmentlistinterview",
+  "version": "1.0.0",
+  "description": "FamilyFriday question",
+  "main": "familyFriday.js",
+  "scripts": {
+    "test": "mocha ./tests"
+  },
+  "author": "Aaron Magid",
+  "license": "MIT"
+}
