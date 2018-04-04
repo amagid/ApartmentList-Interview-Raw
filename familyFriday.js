@@ -9,28 +9,27 @@ function shuffle(names) {
     return names;
 }
 
-function generateGroups(names) {
+function generateGroups(names, groupSize) {
     let groups = [];
+    let i = 0;
     //Iterate in steps of 4 and add groups to output list
-    for (let i = 0; i < names.length; i += 4) {
+    while (i < names.length - (groupSize - 1)) {
         //General case, can take a group of 4
-        if (names.length - i > 6) {
-            groups.push(names.slice(i, i + 4));
-            //Edge case, need to take 2 groups of 3
-        } else if (names.length - i  === 6) {
-            groups.push(names.slice(i, i + 3));
-            groups.push(names.slice(i + 3, i + 6));
-            i = names.length;
-            //Anything else, we can just set all of the remaining people into one last group
-        } else {
-            groups.push(names.slice(i, names.length));
-            i = names.length;
+        if (names.length - i >= groupSize) {
+            groups.push(names.slice(i, i + groupSize));
+            i += groupSize;
         }
+    }
+    let currentGroup = groups.length - 1;
+    while (i < names.length) {
+        groups[currentGroup].push(names[i]);
+        i++;
+        currentGroup--;
     }
     return groups;
 }
 
-function createGroups(names) {
+function createGroups(names, groupSize) {
     shuffle(names);
-    return generateGroups(names);
+    return generateGroups(names, groupSize);
 }
